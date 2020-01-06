@@ -47,18 +47,9 @@ public class FileScanImpl implements FileScan {
         }
     }
 
-    public void addFileInterceptor(FileInterceptor fileInterceptor){
-        this.interceptors.add(fileInterceptor);
+    @Override
+    public void interceptor(FileInterceptor interceptor) {
+        this.interceptors.add(interceptor);
     }
 
-    public static void main(String[] args) {
-        FileScanImpl scan = new FileScanImpl();
-        FileInterceptor printInterceptor = new FilePrintInterceptor();
-        scan.addFileInterceptor(printInterceptor);
-
-        FileInterceptor fileInterceptor = new FileIndexInterceptor(new FileIndexDaoImpl(DataSourceFactory.dataSource()));
-        scan.addFileInterceptor(fileInterceptor);
-
-        scan.index("/Users/lsx/Desktop");
-    }
 }
