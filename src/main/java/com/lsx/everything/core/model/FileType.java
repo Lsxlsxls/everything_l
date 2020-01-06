@@ -37,6 +37,19 @@ public enum FileType {
         return FileType.OTHER;
     }
 
+    /**
+     * 根据文件类型名获取文件类型对象
+     * name
+     */
+    public static FileType lookupByName(String name) {
+        for (FileType fileType : FileType.values()){
+            if(fileType.name().equals(name)){
+                return fileType;
+            }
+        }
+        return FileType.OTHER;
+    }
+
     public static void main(String[] args) {
         System.out.println(FileType.lookup("png"));//img
         System.out.println(FileType.lookup("ppt"));//doc
